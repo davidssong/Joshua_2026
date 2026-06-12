@@ -65,10 +65,6 @@
   /* 저장 직후 부드럽게 빛나는 확인 효과 */
   .cell.saved{animation:savedGlow 2.4s ease-out;}
   @keyframes savedGlow{0%{box-shadow:0 0 0 2px rgba(160,200,140,.0)}18%{box-shadow:0 0 16px 5px rgba(150,195,125,.55),0 0 0 1.5px rgba(120,170,95,.8)}100%{box-shadow:0 0 0 0 rgba(150,195,125,0)}}
-  /* 7월 3일 = 집중 기도일 (골드 헤더) */
-  .dhead.focus{background:linear-gradient(150deg,#f0c468,#d9a13e);color:#fffdf5;box-shadow:0 4px 14px rgba(217,161,62,.42);}
-  .dhead.focus .wd,.dhead.focus .mo{opacity:.85;}
-  .dhead.focus.past{background:linear-gradient(150deg,#d9b76a,#b99348);}
   /* 지난 시간: 글자만 차분한 회색으로 (음영은 그대로) */
   .cell.past .name{color:#a39a88;}
   .cell.past .empty{color:#cfc4ab;}
@@ -191,7 +187,7 @@
   <div id="weeks"></div>
 
   <div class="footer">
-    <button class="sync" id="syncBtn">최신 내용 불러오기</button>
+    <button class="sync" id="syncBtn">🔄 최신 내용 불러오기</button>
     <div class="status" id="status"></div>
     <p class="tip">칸을 누르면 이름과 기도제목을 적을 수 있어요.<br>페이지를 다시 열거나 위 버튼을 누르면 최신 내용으로 동기화됩니다.</p>
   </div>
@@ -364,7 +360,7 @@ function buildGrid(){
       <div class="grid">
         <div></div>
         ${week.days.map(d => `
-          <div class="dhead${d.id==="d15"?" focus":""}" data-day="${d.id}"><div class="mo">${d.m===5?"6월":"7월"}</div><div class="num">${d.d}</div><div class="wd">${wdOf(d)}</div></div>
+          <div class="dhead" data-day="${d.id}"><div class="mo">${d.m===5?"6월":"7월"}</div><div class="num">${d.d}</div><div class="wd">${wdOf(d)}</div></div>
         `).join("")}
         ${SLOTS.map(s => `
           <div class="rowlab">${s.label}</div>
@@ -524,10 +520,10 @@ async function saveCell(){
 
 /* ---------- 시간대별 하늘 + 당번 박스 ---------- */
 function skyOf(h){
-  if(h>=5 && h<8)   return { grad:"linear-gradient(168deg,#2b2a55 0%,#7b5ea7 38%,#e8849c 70%,#f7c789 100%)", disc:"#ffd9a0", glow:"rgba(255,205,140,.55)", top:"58%", stars:.25, hello:"고요한 새벽이에요" };
-  if(h>=8 && h<12)  return { grad:"linear-gradient(168deg,#7fb2e5 0%,#a8cdf0 45%,#e8f2fb 100%)", disc:"#fff3c4", glow:"rgba(255,240,180,.65)", top:"28%", stars:0, hello:"좋은 아침이에요" };
-  if(h>=12 && h<17) return { grad:"linear-gradient(168deg,#6aa8e8 0%,#9ec7f0 50%,#dcedfb 100%)", disc:"#fffbe8", glow:"rgba(255,250,220,.6)", top:"16%", stars:0, hello:"맑은 오후예요" };
-  if(h>=17 && h<20) return { grad:"linear-gradient(168deg,#3b3464 0%,#8a5d9e 42%,#e88a74 74%,#f6bd7a 100%)", disc:"#ffc98e", glow:"rgba(255,180,120,.55)", top:"60%", stars:.35, hello:"노을이 지는 저녁이에요" };
+  if(h>=4 && h<6)   return { grad:"linear-gradient(168deg,#2b2a55 0%,#7b5ea7 38%,#e8849c 70%,#f7c789 100%)", disc:"#ffd9a0", glow:"rgba(255,205,140,.55)", top:"58%", stars:.25, hello:"고요한 새벽이에요" };
+  if(h>=6 && h<12)  return { grad:"linear-gradient(168deg,#7fb2e5 0%,#a8cdf0 45%,#e8f2fb 100%)", disc:"#fff3c4", glow:"rgba(255,240,180,.65)", top:"28%", stars:0, hello:"좋은 아침이에요" };
+  if(h>=12 && h<18) return { grad:"linear-gradient(168deg,#6aa8e8 0%,#9ec7f0 50%,#dcedfb 100%)", disc:"#fffbe8", glow:"rgba(255,250,220,.6)", top:"16%", stars:0, hello:"기분 좋은 오후예요" };
+  if(h>=18 && h<20) return { grad:"linear-gradient(168deg,#3b3464 0%,#8a5d9e 42%,#e88a74 74%,#f6bd7a 100%)", disc:"#ffc98e", glow:"rgba(255,180,120,.55)", top:"60%", stars:.35, hello:"노을이 지는 저녁이에요" };
   return { grad:"linear-gradient(168deg,#0e1230 0%,#23275c 55%,#3a3f7e 100%)", disc:"#f4f1ff", glow:"rgba(220,215,255,.5)", top:"24%", stars:1, hello:"별이 뜬 밤이에요" };
 }
 const STARS=[[8,14,2.2],[16,32,1.4],[24,10,1.8],[31,44,1.2],[38,22,2.4],[47,8,1.4],[53,30,1.8],[61,16,1.3],[68,38,2.1],[74,9,1.5],[81,26,1.9],[88,42,1.3],[93,14,2.2],[12,52,1.3],[58,50,1.5],[84,55,1.7]];
@@ -583,7 +579,7 @@ function renderDuty(){
 
   if(shift === null){
     head = "고요한 새벽";
-    nowHtml = `<span class="none">잠든 시간에도, 캠프를 주님께 맡기고 쉽니다 🌙</span>`;
+    nowHtml = `<span class="none">평안한 밤 되세요</span>`;
   } else if(today){
     head = `${today.m===5?"6월":"7월"} ${today.d}일(${wdOf(today)}) · ${SLOT_KO[shift]} 기도 시간`;
     const nm = prettyNames(liveName(today.id, shift));
