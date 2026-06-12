@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <meta name="color-scheme" content="light only" />
-<title>2026 여호수아 캠프 · 릴레이 금식 기도</title>
+<title>2026 인천온누리교회 영아부 여름 캠프 · 릴레이 금식 기도</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
@@ -33,17 +33,18 @@
       linear-gradient(180deg,#f4ecdb,#ece0c6);
   }
   .wrap{max-width:1000px;margin:0 auto;}
-  .eyebrow{letter-spacing:.42em;font-size:10.5px;color:var(--clay);text-transform:uppercase;font-weight:700;margin-bottom:8px;text-align:center;}
-  .title{font-family:var(--serif);font-weight:700;font-size:clamp(26px,7vw,44px);text-align:center;line-height:1.18;}
-  .sub{text-align:center;color:var(--soft);margin:12px auto 2px;font-size:13.5px;line-height:1.7;max-width:420px;}
-  .sub b{color:var(--clay);}
-  .verse{text-align:center;font-family:var(--script);color:var(--clay);font-size:clamp(24px,6vw,34px);margin:14px 0 24px;line-height:1.2;}
-  .rules{max-width:560px;margin:0 auto 30px;background:rgba(255,255,255,.5);border:1px solid var(--line);border-radius:15px;padding:16px 20px;}
-  .rule{display:flex;gap:7px;margin:0 0 9px;font-size:12.5px;line-height:1.7;color:#5a4f3d;}
-  .rule:last-child{margin-bottom:0;}
-  .rules b{color:var(--clay);}
-  .rules .n{color:var(--gold);font-weight:700;font-family:var(--serif);flex:0 0 auto;}
-  .rules .t{flex:1;}
+  /* ── 맨 위 하늘 헤더 (시간대별) ── */
+  .sky{position:relative;overflow:hidden;margin:-26px -14px 0;padding:40px 22px 38px;border-radius:0 0 30px 30px;}
+  .sky-stars{position:absolute;inset:0;z-index:0;}
+  .sky-star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 3s ease-in-out infinite;}
+  .sky-disc{position:absolute;right:13%;top:26%;width:50px;height:50px;border-radius:50%;z-index:1;animation:drift 7s ease-in-out infinite;}
+  .sky-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.20),transparent 72%);}
+  .sky-in{position:relative;z-index:3;max-width:1000px;margin:0 auto;padding-right:62px;}
+  .eyebrow{letter-spacing:.18em;font-size:10.5px;color:rgba(255,255,255,.82);text-transform:uppercase;font-weight:700;margin-bottom:8px;text-shadow:0 1px 6px rgba(0,0,0,.3);}
+  .title{font-family:var(--serif);font-weight:700;font-size:clamp(28px,8vw,42px);line-height:1.14;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35);}
+  .sub{color:rgba(255,255,255,.92);margin:11px 0 0;font-size:13.5px;line-height:1.65;max-width:420px;text-shadow:0 1px 6px rgba(0,0,0,.3);}
+  .sub b{color:#fff;}
+  .verse{font-family:var(--script);color:rgba(255,255,255,.96);font-size:clamp(24px,7vw,32px);margin:12px 0 0;line-height:1.15;text-shadow:0 1px 8px rgba(0,0,0,.32);}
   .week{margin-bottom:30px;}
   .wtitle{display:flex;align-items:center;gap:11px;margin:0 2px 12px;}
   .wtitle h2{font-family:var(--serif);font-size:19px;font-weight:700;}
@@ -60,6 +61,27 @@
     font-family:inherit;color:inherit;text-align:center;}
   .cell:active{transform:scale(.97);}
   .cell:hover{box-shadow:0 7px 16px rgba(80,60,25,.13);border-color:var(--gold);}
+  .cell.now{border-color:var(--gold);animation:nowGlow 2.4s ease-in-out infinite alternate;}
+  /* 저장 직후 부드럽게 빛나는 확인 효과 */
+  .cell.saved{animation:savedGlow 2.4s ease-out;}
+  @keyframes savedGlow{0%{box-shadow:0 0 0 2px rgba(160,200,140,.0)}18%{box-shadow:0 0 16px 5px rgba(150,195,125,.55),0 0 0 1.5px rgba(120,170,95,.8)}100%{box-shadow:0 0 0 0 rgba(150,195,125,0)}}
+  /* 7월 3일 = 집중 기도일 (골드 헤더) */
+  .dhead.focus{background:linear-gradient(150deg,#f0c468,#d9a13e);color:#fffdf5;box-shadow:0 4px 14px rgba(217,161,62,.42);}
+  .dhead.focus .wd,.dhead.focus .mo{opacity:.85;}
+  .dhead.focus.past{background:linear-gradient(150deg,#d9b76a,#b99348);}
+  /* 지난 시간: 글자만 차분한 회색으로 (음영은 그대로) */
+  .cell.past .name{color:#a39a88;}
+  .cell.past .empty{color:#cfc4ab;}
+  .cell.past .topic{color:#b3a88f;}
+  /* 지난 날짜 헤더: 빛바랜 세피아 + 골드 헤어라인 */
+  .dhead.past{background:linear-gradient(160deg,#8a7d68,#6e6250);color:#ece5d5;box-shadow:0 2px 8px rgba(60,45,20,.10);position:relative;}
+  .dhead.past::after{content:"";position:absolute;left:18%;right:18%;bottom:4px;height:1px;background:linear-gradient(90deg,transparent,rgba(216,184,120,.7),transparent);}
+  .dhead.past .num{opacity:.92;}
+  .dhead.past .wd,.dhead.past .mo{opacity:.55;}
+  @keyframes nowGlow{
+    0%{box-shadow:0 0 24px 10px rgba(232,182,82,.08),0 0 0 1px rgba(232,182,82,.40);}
+    100%{box-shadow:0 0 18px 6px rgba(232,182,82,.62),0 0 0 1px rgba(232,182,82,.95);}
+  }
   .cell .name{font-size:12.5px;font-weight:700;line-height:1.3;}
   .cell .empty{font-size:10.5px;color:#c2b594;margin-top:4px;}
   .cell .topic{margin-top:4px;font-size:9.5px;color:var(--soft);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
@@ -83,19 +105,82 @@
   .inp,.area{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);background:#fffdf8;outline:none;transition:border-color .15s;}
   .inp:focus,.area:focus{border-color:var(--clay);}
   .area{resize:vertical;min-height:120px;line-height:1.65;}
+  /* 보기 모드 */
+  .vfield{margin-bottom:14px;}
+  .vlabel{font-size:12px;font-weight:700;color:var(--soft);margin-bottom:5px;}
+  .vval{font-size:15px;color:var(--ink);line-height:1.6;word-break:keep-all;background:#fffdf8;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;}
+  .vval.vprayer{min-height:80px;white-space:pre-wrap;}
+  .vval .vempty{color:#bcae90;font-size:13.5px;}
+  .vmeta{font-size:11px;color:#a99a7e;text-align:right;margin:-4px 2px 12px;}
+  .save.edit{background:linear-gradient(135deg,#8a7a5c,#6e6047);box-shadow:0 6px 16px rgba(110,96,71,.28);}
   .save{width:100%;border:none;border-radius:12px;padding:13px;font-family:inherit;font-size:15px;font-weight:700;color:#fff;cursor:pointer;
     background:linear-gradient(135deg,#a8543a,#8c3f2c);box-shadow:0 6px 16px rgba(140,63,44,.3);}
   .save:active{transform:scale(.98);}
   @keyframes fade{from{opacity:0}to{opacity:1}}
   @keyframes pop{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes twinkle{0%,100%{opacity:.9}50%{opacity:.25}}
+
+  /* ── 규칙 (연하게) ── */
+  .rules{max-width:560px;margin:0 auto 26px;background:rgba(255,255,255,.30);border:1px solid #ece0c6;border-radius:14px;padding:13px 18px;}
+  .rule{display:flex;gap:7px;margin:0 0 7px;font-size:11.5px;line-height:1.65;color:#9a8c72;}
+  .rule:last-child{margin-bottom:0;}
+  .rules b{color:#b68f55;font-weight:700;}
+  .rules .n{color:#d2c19c;font-weight:700;font-family:var(--serif);flex:0 0 auto;}
+  .rules .t{flex:1;}
+
+  /* ── 당번 박스 (고급 골드 카드) ── */
+  .duty{max-width:560px;margin:-20px auto 10px;position:relative;z-index:2;border-radius:22px;padding:14px 14px;
+    background:linear-gradient(165deg,#fffdf7,#fbf2df);
+    border:1px solid #eee0c2;box-shadow:0 12px 30px rgba(120,90,30,.18);}
+  .duty-cap{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--clay);letter-spacing:.06em;margin:3px 5px 11px;}
+  .duty-cap::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(184,137,63,.35),transparent);}
+  .duty-live{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:0 0 auto;animation:pulse 1.8s infinite;}
+  .duty-pill{position:relative;overflow:hidden;border-radius:16px;padding:17px 19px 18px;color:#f4ecd9;
+    background:linear-gradient(160deg,#564833 0%,#3a3020 100%);
+    box-shadow:0 8px 22px rgba(60,45,20,.24);}
+  .duty-spark{position:absolute;border-radius:50%;background:#fff;pointer-events:none;animation:sparkTw 3.2s ease-in-out infinite;}
+  @keyframes sparkTw{0%,100%{opacity:.05;transform:scale(.7)}50%{opacity:.85;transform:scale(1)}}
+  .duty-pill-cap{font-size:11.5px;font-weight:700;color:#d8b878;letter-spacing:.05em;margin-bottom:5px;}
+  .duty-now{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.45;word-break:keep-all;}
+  .duty-now .none{font-family:var(--body);font-size:14.5px;font-weight:400;opacity:.97;}
+  /* 다음 차례 = 위로 붙이고 경계는 은은하게 */
+  .duty-next{max-width:560px;margin:0 auto 28px;text-align:right;
+    background:linear-gradient(160deg,rgba(255,253,248,.85),rgba(249,241,227,.85));
+    border:1px solid rgba(184,137,63,.14);border-radius:16px;padding:13px 18px 14px;
+    box-shadow:0 4px 14px rgba(120,90,30,.07);}
+  .duty-next-label{font-size:11px;font-weight:700;letter-spacing:.05em;color:#bf924f;margin-bottom:5px;}
+  .duty-next-names{font-family:var(--serif);font-size:16px;font-weight:700;color:#6f6047;line-height:1.45;word-break:keep-all;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,130,31,.45)}70%{box-shadow:0 0 0 7px rgba(201,130,31,0)}100%{box-shadow:0 0 0 0 rgba(201,130,31,0)}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">2026 여호수아 캠프</div>
-  <h1 class="title">릴레이 금식 기도</h1>
-  <p class="sub">캠프를 앞두고 <b>3주 동안</b> 함께 금식하며 기도합니다</p>
-  <p class="verse">오직 주님의 영광을 위하여</p>
+  <div class="sky" id="sky">
+    <div class="sky-stars" id="skyStars"></div>
+    <div class="sky-disc" id="skyDisc"></div>
+    <div class="sky-scrim"></div>
+    <div class="sky-in">
+      <div class="eyebrow">2026 인천온누리교회 영아부 여름 캠프</div>
+      <h1 class="title">릴레이 금식 기도</h1>
+      <p class="sub">캠프를 앞두고 <b>3주 동안</b> 함께 금식하며 기도합니다</p>
+      <p class="verse">오직 주님의 영광을 위하여</p>
+    </div>
+  </div>
+
+  <div class="duty" id="duty">
+    <div class="duty-cap"><span class="duty-live"></span> 기도 담당</div>
+    <div class="duty-pill">
+      <span class="duty-spark" style="left:78%;top:18%;width:3px;height:3px;animation-delay:0s;animation-duration:3.4s"></span><span class="duty-spark" style="left:88%;top:42%;width:2px;height:2px;animation-delay:1.1s;animation-duration:2.8s"></span><span class="duty-spark" style="left:70%;top:64%;width:2.5px;height:2.5px;animation-delay:.5s;animation-duration:3.8s"></span><span class="duty-spark" style="left:93%;top:70%;width:2px;height:2px;animation-delay:1.8s;animation-duration:3.1s"></span><span class="duty-spark" style="left:60%;top:28%;width:2px;height:2px;animation-delay:2.4s;animation-duration:3.6s"></span><span class="duty-spark" style="left:83%;top:12%;width:2px;height:2px;animation-delay:.9s;animation-duration:2.9s"></span><span class="duty-spark" style="left:95%;top:28%;width:2.5px;height:2.5px;animation-delay:1.5s;animation-duration:3.3s"></span><span class="duty-spark" style="left:66%;top:82%;width:2px;height:2px;animation-delay:2s;animation-duration:3s"></span>
+      <div class="duty-pill-cap" id="dutyPhase"></div>
+      <div class="duty-now" id="dutyNow"></div>
+    </div>
+  </div>
+
+  <div class="duty-next" id="dutyNextWrap">
+    <div class="duty-next-label" id="dutyNextLabel">다음 차례</div>
+    <div class="duty-next-names" id="dutyNext"></div>
+  </div>
 
   <div class="rules">
     <div class="rule"><span class="n">1</span><span class="t">금식할 수 있는 날짜와 시간을 정해 <b>이름</b>을 적어요. (2번 참여)</span></div>
@@ -119,7 +204,19 @@
       <div class="slot" id="mSlot"></div>
       <button class="close" id="closeBtn">×</button>
     </div>
-    <div class="mbody">
+    <div class="mbody" id="mView">
+      <div class="vfield">
+        <div class="vlabel">기도 당번</div>
+        <div class="vval" id="vName"></div>
+      </div>
+      <div class="vfield">
+        <div class="vlabel">기도제목</div>
+        <div class="vval vprayer" id="vPrayer"></div>
+      </div>
+      <div class="vmeta" id="vMeta"></div>
+      <button class="save edit" id="editBtn">기도제목 작성하기</button>
+    </div>
+    <div class="mbody" id="mEdit" style="display:none">
       <div class="field">
         <label>기도 당번 (이름)</label>
         <input class="inp" id="mName" placeholder="여러 명은 쉼표로 구분" />
@@ -250,12 +347,12 @@ async function putData(obj){
 }
 
 // 한 칸만 갱신 (서버가 합쳐주므로 동시 수정에도 안전)
-async function patchData(id, name, prayer){
+async function patchData(id, name, prayer, at){
   if(!shared()) return;   // 로컬 모드는 putData 경로를 씀
   await fetch(CONFIG.API_URL, {
     method:"POST", mode:"no-cors",
     headers:{ "Content-Type":"text/plain;charset=utf-8" },
-    body: JSON.stringify({ patch:{ id, name, prayer }, v: SEED_VERSION })
+    body: JSON.stringify({ patch:{ id, name, prayer, at }, v: SEED_VERSION })
   });
 }
 
@@ -267,10 +364,10 @@ function buildGrid(){
       <div class="grid">
         <div></div>
         ${week.days.map(d => `
-          <div class="dhead"><div class="mo">${d.m===5?"6월":"7월"}</div><div class="num">${d.d}</div><div class="wd">${wdOf(d)}</div></div>
+          <div class="dhead${d.id==="d15"?" focus":""}" data-day="${d.id}"><div class="mo">${d.m===5?"6월":"7월"}</div><div class="num">${d.d}</div><div class="wd">${wdOf(d)}</div></div>
         `).join("")}
         ${SLOTS.map(s => `
-          <div class="rowlab"><span class="rd" style="background:${s.color}"></span>${s.label}</div>
+          <div class="rowlab">${s.label}</div>
           ${week.days.map(d => `<button class="cell" data-id="${d.id}:${s.key}" data-slot="${s.key}"></button>`).join("")}
         `).join("")}
       </div>
@@ -280,18 +377,46 @@ function buildGrid(){
 }
 
 function renderCells(){
+  const now = new Date();
+  // 지금 진행 중인 차례 칸 id 계산
+  const h = now.getHours();
+  let curShift = null;
+  if(h>=6 && h<12) curShift = "morning";
+  else if(h>=12 && h<18) curShift = "lunch";
+  else if(h>=18 && h<24) curShift = "dinner";
+  const todayKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+  const todayDay = DAYBYKEY[todayKey];
+  const currentId = (curShift && todayDay) ? `${todayDay.id}:${curShift}` : null;
+
   document.querySelectorAll(".cell").forEach(btn => {
     const id = btn.dataset.id;
+    const slot = btn.dataset.slot;
     const c = state.data[id] || {};
-    const color = slotMeta(btn.dataset.slot).color;
+    const color = slotMeta(slot).color;
     const names = splitNames(c.name);
-    const has = !!c.prayer;
-    btn.style.background = has ? `linear-gradient(160deg,#fffaf0,${color}14)` : "";
+    // 해당 담당 시간대가 끝났는지 (아침→12시, 점심→18시, 저녁→24시)
+    const day = DAYS[id.split(":")[0]];
+    const endH = (SLOT_HOUR[slot] || 0) + 6;
+    const passed = day ? now >= new Date(day.y, day.m, day.d, endH, 0, 0) : false;
+    const realPrayer = (c.prayer && c.prayer !== "-") ? c.prayer : "";
+    const passedEmpty = !realPrayer && passed;     // 시간 지났는데 비어 있음 → 자동 '-'
+    const done = !!realPrayer || passedEmpty;
+    btn.classList.toggle("now", id === currentId);
+    btn.classList.toggle("past", passed);
+    btn.style.background = done ? "linear-gradient(160deg,#fffbf0,#f6e8c8)" : "";
+    btn.style.borderColor = done && id !== currentId ? "#e2cf9e" : "";
     btn.innerHTML =
-      (has ? `<span class="cdot" style="background:${color}">✓</span>` : "") +
       (names.length ? names.map(n => `<span class="name">${esc(n)}</span>`).join("")
                     : `<span class="empty">＋ 추가</span>`) +
-      (has ? `<span class="topic">🙏 ${esc(c.prayer)}</span>` : "");
+      (realPrayer ? `<span class="topic">🙏 ${esc(realPrayer)}</span>` : "");
+  });
+
+  // 날짜 헤더: 그 날이 완전히 지나면(자정 이후) 빛바랜 표시
+  document.querySelectorAll(".dhead").forEach(el => {
+    const day = DAYS[el.dataset.day];
+    if(!day) return;
+    const dayEnd = new Date(day.y, day.m, day.d + 1, 0, 0, 0);
+    el.classList.toggle("past", now >= dayEnd);
   });
 }
 
@@ -305,7 +430,7 @@ function reconcile(remote){
     const m = buildDefault();
     if(remote){
       Object.keys(m).forEach(id => {
-        if(remote[id] && remote[id].prayer) m[id].prayer = remote[id].prayer;
+        if(remote[id] && remote[id].prayer){ m[id].prayer = remote[id].prayer; if(remote[id].at) m[id].at = remote[id].at; }
       });
     }
     m.__v = SEED_VERSION;
@@ -323,6 +448,7 @@ async function sync(){
     if(changed) await putData(obj);   // 저장소를 최신 이름으로 한 번 교정
     state.data = obj;
     renderCells();
+    if(typeof renderDuty === "function") renderDuty();
     setStatus(shared() ? "모두와 공유 중 · 동기화 완료" : "이 기기에만 저장됨 (공유 설정 안 됨)");
   } catch(e){
     setStatus("동기화 실패 — 잠시 후 다시 시도하세요");
@@ -338,9 +464,27 @@ function openModal(id){
     `${day.m===5?"6월":"7월"} ${day.d}일 <span style="font-size:15px;opacity:.8">(${wdOf(day)})</span>`;
   document.getElementById("mSlot").textContent = s.label + " 기도 당번";
   document.getElementById("mhead").style.background = `linear-gradient(135deg, ${s.color}, #2f2619)`;
+  // 보기 모드 채우기
+  const names = prettyNames(c.name);
+  document.getElementById("vName").innerHTML = names ? esc(names) : '<span class="vempty">아직 이름이 없어요</span>';
+  document.getElementById("vPrayer").innerHTML = c.prayer ? esc(c.prayer) : '<span class="vempty">아직 기도제목이 없어요</span>';
+  const meta = document.getElementById("vMeta");
+  if(c.at){
+    const t = new Date(c.at);
+    meta.textContent = `마지막 수정 · ${t.getMonth()+1}월 ${t.getDate()}일 ${String(t.getHours()).padStart(2,"0")}:${String(t.getMinutes()).padStart(2,"0")}`;
+    meta.style.display = "";
+  } else { meta.style.display = "none"; }
+  // 수정 모드 입력값 준비
   document.getElementById("mName").value = c.name || "";
   document.getElementById("mPrayer").value = c.prayer || "";
+  // 항상 보기 모드부터
+  document.getElementById("mView").style.display = "";
+  document.getElementById("mEdit").style.display = "none";
   document.getElementById("back").classList.add("on");
+}
+function toEditMode(){
+  document.getElementById("mView").style.display = "none";
+  document.getElementById("mEdit").style.display = "";
 }
 function closeModal(){ document.getElementById("back").classList.remove("on"); state.activeId = null; }
 
@@ -351,32 +495,134 @@ async function saveCell(){
   const prayer = document.getElementById("mPrayer").value.trim();
   const btn = document.getElementById("saveBtn");
   btn.textContent = "저장 중…";
+  const at = Date.now();
   try {
     if(shared()){
       // 서버(시트)가 해당 칸만 합쳐서 저장 → 동시 수정에도 안전
-      await patchData(id, name, prayer);
-      state.data[id] = { name, prayer };
+      await patchData(id, name, prayer, at);
+      state.data[id] = { name, prayer, at };
       renderCells();
     } else {
       const remote = await fetchData();
       const { obj } = reconcile(remote);
-      obj[id] = { name, prayer };
+      obj[id] = { name, prayer, at };
       await putData(obj);
       state.data = obj;
       renderCells();
     }
     btn.textContent = "✓ 저장됐어요";
-    setTimeout(() => { closeModal(); btn.textContent = "저장하기"; }, 600);
+    setTimeout(() => {
+      closeModal(); btn.textContent = "저장하기";
+      const savedCell = document.querySelector(`.cell[data-id="${id}"]`);
+      if(savedCell){ savedCell.classList.add("saved"); setTimeout(()=>savedCell.classList.remove("saved"), 2400); }
+    }, 1500);
   } catch(e){
     btn.textContent = "저장 실패 — 다시 시도";
     setTimeout(() => btn.textContent = "저장하기", 1500);
   }
 }
 
+/* ---------- 시간대별 하늘 + 당번 박스 ---------- */
+function skyOf(h){
+  if(h>=5 && h<8)   return { grad:"linear-gradient(168deg,#2b2a55 0%,#7b5ea7 38%,#e8849c 70%,#f7c789 100%)", disc:"#ffd9a0", glow:"rgba(255,205,140,.55)", top:"58%", stars:.25, hello:"고요한 새벽이에요" };
+  if(h>=8 && h<12)  return { grad:"linear-gradient(168deg,#7fb2e5 0%,#a8cdf0 45%,#e8f2fb 100%)", disc:"#fff3c4", glow:"rgba(255,240,180,.65)", top:"28%", stars:0, hello:"좋은 아침이에요" };
+  if(h>=12 && h<17) return { grad:"linear-gradient(168deg,#6aa8e8 0%,#9ec7f0 50%,#dcedfb 100%)", disc:"#fffbe8", glow:"rgba(255,250,220,.6)", top:"16%", stars:0, hello:"맑은 오후예요" };
+  if(h>=17 && h<20) return { grad:"linear-gradient(168deg,#3b3464 0%,#8a5d9e 42%,#e88a74 74%,#f6bd7a 100%)", disc:"#ffc98e", glow:"rgba(255,180,120,.55)", top:"60%", stars:.35, hello:"노을이 지는 저녁이에요" };
+  return { grad:"linear-gradient(168deg,#0e1230 0%,#23275c 55%,#3a3f7e 100%)", disc:"#f4f1ff", glow:"rgba(220,215,255,.5)", top:"24%", stars:1, hello:"별이 뜬 밤이에요" };
+}
+const STARS=[[8,14,2.2],[16,32,1.4],[24,10,1.8],[31,44,1.2],[38,22,2.4],[47,8,1.4],[53,30,1.8],[61,16,1.3],[68,38,2.1],[74,9,1.5],[81,26,1.9],[88,42,1.3],[93,14,2.2],[12,52,1.3],[58,50,1.5],[84,55,1.7]];
+
+// 모든 슬롯을 시간순으로 정렬 (아침6시·점심12시·저녁18시 시작)
+const SLOT_HOUR = { morning:6, lunch:12, dinner:18 };
+const SLOT_KO   = { morning:"아침", lunch:"점심", dinner:"저녁" };
+const ORDER = [];
+WEEKS.forEach(w => w.days.forEach(d => ["morning","lunch","dinner"].forEach(s => {
+  ORDER.push({ dayId:d.id, slot:s, day:d, start:new Date(d.y, d.m, d.d, SLOT_HOUR[s], 0, 0) });
+})));
+ORDER.sort((a,b) => a.start - b.start);
+const DAYBYKEY = {};
+WEEKS.forEach(w => w.days.forEach(d => DAYBYKEY[`${d.y}-${d.m}-${d.d}`] = d));
+
+function liveName(dayId, slot){
+  const c = state.data[`${dayId}:${slot}`];
+  return c && c.name ? c.name : "";
+}
+function prettyNames(str){
+  const arr = splitNames(str);
+  return arr.length ? arr.join(" · ") : "";
+}
+
+function renderDuty(){
+  const now = new Date();
+  const h = now.getHours();
+  const sky = skyOf(h);
+
+  // 맨 위 하늘 헤더 그리기
+  const skyEl = document.getElementById("sky");
+  skyEl.style.background = sky.grad;
+  const disc = document.getElementById("skyDisc");
+  disc.style.background = sky.disc;
+  disc.style.boxShadow = `0 0 46px 18px ${sky.glow}`;
+  disc.style.top = sky.top;
+  document.getElementById("skyStars").innerHTML = sky.stars>0
+    ? STARS.map(([x,y,r],i)=>`<div class="sky-star" style="left:${x}%;top:${y}%;width:${r*2}px;height:${r*2}px;opacity:${sky.stars};animation-duration:${(2.6+(i%5)*0.7).toFixed(1)}s;animation-delay:${(i*0.33).toFixed(2)}s"></div>`).join("")
+    : "";
+
+  // 당번 시간대 (06-12 오전 / 12-18 점심 / 18-24 저녁 / 00-06 밤)
+  let shift = null;
+  if(h>=6 && h<12) shift = "morning";
+  else if(h>=12 && h<18) shift = "lunch";
+  else if(h>=18 && h<24) shift = "dinner";
+
+  const todayKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+  const today = DAYBYKEY[todayKey];
+  const campStart = ORDER[0].start;
+  const campEnd = new Date(ORDER[ORDER.length-1].start.getTime() + 6*3600*1000);
+
+  let head = "", nowHtml = "";
+
+  if(shift === null){
+    head = "고요한 새벽";
+    nowHtml = `<span class="none">잠든 시간에도, 캠프를 주님께 맡기고 쉽니다 🌙</span>`;
+  } else if(today){
+    head = `${today.m===5?"6월":"7월"} ${today.d}일(${wdOf(today)}) · ${SLOT_KO[shift]} 기도 시간`;
+    const nm = prettyNames(liveName(today.id, shift));
+    nowHtml = nm ? nm : `<span class="none">이 시간 당번이 비어 있어요</span>`;
+  } else if(now < campStart){
+    head = "곧 시작돼요";
+    nowHtml = `<span class="none">함께 마음을 모아 준비해요</span>`;
+  } else if(now > campEnd){
+    head = "감사합니다";
+    nowHtml = `<span class="none">3주간의 금식 기도가 마무리되었어요</span>`;
+  } else {
+    head = "쉬어가는 날";
+    nowHtml = `<span class="none">다음 당번을 위해 함께 기도해요</span>`;
+  }
+
+  document.getElementById("dutyPhase").textContent = head;
+  document.getElementById("dutyNow").innerHTML = nowHtml;
+
+  // 다음 차례 = 지금 이후 가장 가까운 슬롯
+  const next = ORDER.find(e => e.start > now);
+  const wrap = document.getElementById("dutyNextWrap");
+  if(next){
+    const d = next.day;
+    const dateKo = `${d.m===5?"6월":"7월"} ${d.d}일`;
+    document.getElementById("dutyNextLabel").textContent = `다음 차례 · ${dateKo}(${wdOf(d)}) ${SLOT_KO[next.slot]}`;
+    const nm = prettyNames(liveName(next.dayId, next.slot));
+    document.getElementById("dutyNext").textContent = nm || "아직 이름이 비어 있어요";
+    wrap.style.display = "";
+  } else {
+    wrap.style.display = "none";
+  }
+}
+
 /* ---------- 이벤트 ---------- */
 buildGrid();
 renderCells();
+renderDuty();
 sync();
+setInterval(() => { renderDuty(); renderCells(); }, 60000);
 
 document.getElementById("weeks").addEventListener("click", e => {
   const btn = e.target.closest(".cell");
@@ -385,6 +631,7 @@ document.getElementById("weeks").addEventListener("click", e => {
 document.getElementById("closeBtn").addEventListener("click", closeModal);
 document.getElementById("back").addEventListener("click", e => { if(e.target.id === "back") closeModal(); });
 document.getElementById("saveBtn").addEventListener("click", saveCell);
+document.getElementById("editBtn").addEventListener("click", toEditMode);
 document.getElementById("syncBtn").addEventListener("click", sync);
 document.addEventListener("visibilitychange", () => { if(!document.hidden) sync(); });
 </script>
