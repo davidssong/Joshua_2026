@@ -210,7 +210,7 @@
         <div class="vval vprayer" id="vPrayer"></div>
       </div>
       <div class="vmeta" id="vMeta"></div>
-      <button class="save edit" id="editBtn">기도제목 작성하기</button>
+      <button class="save edit" id="editBtn">이름 · 기도제목 작성하기</button>
     </div>
     <div class="mbody" id="mEdit" style="display:none">
       <div class="field">
@@ -630,6 +630,7 @@ document.getElementById("saveBtn").addEventListener("click", saveCell);
 document.getElementById("editBtn").addEventListener("click", toEditMode);
 document.getElementById("syncBtn").addEventListener("click", sync);
 document.addEventListener("visibilitychange", () => { if(!document.hidden) sync(); });
+
 </script>
 </body>
 </html>
